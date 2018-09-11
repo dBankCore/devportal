@@ -4,16 +4,16 @@ position: 15
 description: 'Tutorial pulls a list of the followers or authors being followed from the blockchain then displays the result.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/15_get_follower_and_following_list) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/15_get_follower_and_following_list) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
-This tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of authors being followed or authors that a specified user is following.
+This tutorial will explain and show you how to access the **DPay** blockchain using the [dpay-python](https://github.com/dpays/dpay-python) library to fetch list of authors being followed or authors that a specified user is following.
 
 ## Intro
 
-We are using the `get_followers` and `get_following` functions that are built into the official library `steem-python`. These functions allow us to query the Steem blockchain in order to retrieve either a list of authors that are being followed or a list of authors that are currently following a specified user. There are 4 parameters required to execute these functions:
+We are using the `get_followers` and `get_following` functions that are built into the official library `dpay-python`. These functions allow us to query the dPay blockchain in order to retrieve either a list of authors that are being followed or a list of authors that are currently following a specified user. There are 4 parameters required to execute these functions:
 
 1.  _account_ - The specific user for which the follower(ing) list will be retrieved
 1.  _start follower(ing)_ - The starting letter(s) or name for the search query. This value can be set as an empty string in order to include all authors starting from "a"
@@ -29,15 +29,15 @@ We are using the `get_followers` and `get_following` functions that are built in
 
 #### 1. App setup <a name="setup"></a>
 
-In this tutorial we use 2 packages, `pick` - helps us to select the query type interactively. `steem` - steem-python library, interaction with Blockchain.
+In this tutorial we use 2 packages, `pick` - helps us to select the query type interactively. `dpay` - dpay-python library, interaction with Blockchain.
 
-First we import both libraries and initialize Steem class
+First we import both libraries and initialize DPay class
 
 ```python
 from pick import pick
-from steem import Steem
+from dpay import DPay
 
-s = Steem()
+s = DPay()
 ```
 
 #### 2. Input variables <a name="input"></a>
@@ -116,7 +116,7 @@ This is a fairly simple example of how to use these functions but we encourage y
 
 ### To Run the tutorial
 
-1.  [review dev requirements](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
+1.  [review dev requirements](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
 1.  clone this repo
 1.  `cd tutorials/15_get_follower_and_following_list`
 1.  `pip install -r requirements.txt`

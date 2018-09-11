@@ -8,7 +8,7 @@ layout: full
 
 ### Intro
 
-We're going over the various API calls needed to determine the remaining bandwidth available to a particular account.  As mentioned in the [STEEM Whitepaper](https://steem.io/steem-whitepaper.pdf):
+We're going over the various API calls needed to determine the remaining bandwidth available to a particular account.
 
 > Bandwidth used by an individual user should be measured over a suitably long period of time to allow that
 user to time-shift their usage. Users tend to login, do many things at once, then logout. This means that
@@ -23,7 +23,7 @@ Bandwidth is specific to each account and depends on account activity.
 
 1. [Getting Account Bandwidth](#getting-account-bandwidth)
 1. [Dynamic Global Properties](#dynamic-global-properties)
-1. [Account STEEM Power](#account-steem-power)
+1. [Account BEX Power](#account-bex-power)
 1. [Calculate](#calculate)
 
 ### Getting Account Bandwidth
@@ -37,7 +37,7 @@ curl -s --data '{
       "forum"
    ],
    "id":1
-}' https://api.steemit.com
+}' https://api.dpays.io
 ```
 
 ```json
@@ -64,7 +64,7 @@ Note, `average_bandwidth` is expressed as an integer with six decimal places rep
 To do the calculation, we need `max_virtual_bandwidth` and `total_vesting_shares` from the global properties, e.g.:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.dpays.io
 ```
 
 ```json
@@ -78,19 +78,19 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_pro
       "current_witness":"followbtcnews",
       "total_pow":514415,
       "num_pow_witnesses":172,
-      "virtual_supply":"283443693.176 STEEM",
-      "current_supply":"271786073.683 STEEM",
-      "confidential_supply":"0.000 STEEM",
-      "current_sbd_supply":"15504633.926 SBD",
-      "confidential_sbd_supply":"0.000 SBD",
-      "total_vesting_fund_steem":"193007548.472 STEEM",
+      "virtual_supply":"283443693.176 BEX",
+      "current_supply":"271786073.683 BEX",
+      "confidential_supply":"0.000 BEX",
+      "current_bbd_supply":"15504633.926 BBD",
+      "confidential_bbd_supply":"0.000 BBD",
+      "total_vesting_fund_dpay":"193007548.472 BEX",
       "total_vesting_shares":"391468555319.000697 VESTS",
-      "total_reward_fund_steem":"0.000 STEEM",
+      "total_reward_fund_dpay":"0.000 BEX",
       "total_reward_shares2":"0",
       "pending_rewarded_vesting_shares":"382967391.274340 VESTS",
-      "pending_rewarded_vesting_steem":"187173.234 STEEM",
-      "sbd_interest_rate":0,
-      "sbd_print_rate":2966,
+      "pending_rewarded_vesting_dpay":"187173.234 BEX",
+      "bbd_interest_rate":0,
+      "bbd_print_rate":2966,
       "maximum_block_size":65536,
       "current_aslot":24341309,
       "recent_slots_filled":"340282366920938463463374607431768211455",
@@ -104,12 +104,12 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_pro
 }
 ```
 
-### Account STEEM Power
+### Account BEX Power
 
-We also need to know how much the account has in STEEM Power from `vesting_shares` and `received_vesting_shares`:
+We also need to know how much the account has in BEX Power from `vesting_shares` and `received_vesting_shares`:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["cheetah"]], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["cheetah"]], "id":1}' https://api.dpays.io
 ```
 
 ```json
@@ -122,26 +122,26 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params
          "owner":{
             "weight_threshold":1,
             "account_auths":[],
-            "key_auths":[["STM7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 1]]
+            "key_auths":[["DWB7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 1]]
          },
          "active":{
             "weight_threshold":1,
             "account_auths":[],
-            "key_auths":[["STM7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 1]]
+            "key_auths":[["DWB7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 1]]
          },
          "posting":{
             "weight_threshold":1,
             "account_auths":[["anyx", 100]],
-            "key_auths":[["STM5bicRFWhpxnwBymo2HHJv6mFLiaP6AwVVsFEnnVjVcqbvqzvFt", 100], ["STM7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 100], ["STM8Jn23vNmBzVuDAgQeZzzR17LmruENmmZmv1ra53tbsBgYbJFwk", 100]]
+            "key_auths":[["DWB5bicRFWhpxnwBymo2HHJv6mFLiaP6AwVVsFEnnVjVcqbvqzvFt", 100], ["DWB7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT", 100], ["DWB8Jn23vNmBzVuDAgQeZzzR17LmruENmmZmv1ra53tbsBgYbJFwk", 100]]
          },
-         "memo_key":"STM7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT",
-         "json_metadata":"{\"profile\":{\"profile_image\":\"https:\/\/c1.staticflickr.com\/6\/5739\/22389343016_25d10c52a3_b.jpg\",\"about\":\"I am a robot that automatically finds similar content. Check the website linked to on my blog to learn more about me!\",\"website\":\"http:\/\/steemit.com\/steemit\/@cheetah\/faq-about-cheetah\"}}",
+         "memo_key":"DWB7yFmwPSKUP7FCV7Ut9Aev5cwfDzJZixcreS1U3ha36XG47ZpqT",
+         "json_metadata":"{\"profile\":{\"profile_image\":\"https:\/\/c1.staticflickr.com\/6\/5739\/22389343016_25d10c52a3_b.jpg\",\"about\":\"I am a robot that automatically finds similar content. Check the website linked to on my blog to learn more about me!\",\"website\":\"http:\/\/dsite.io\/dsite\/@cheetah\/faq-about-cheetah\"}}",
          "proxy":"",
          "last_owner_update":"1970-01-01T00:00:00",
          "last_account_update":"2017-06-13T00:14:00",
          "created":"2016-07-17T08:47:18",
          "mined":true,
-         "recovery_account":"steem",
+         "recovery_account":"dpay",
          "last_account_recovery":"1970-01-01T00:00:00",
          "reset_account":"null",
          "comment_count":0,
@@ -150,21 +150,21 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params
          "can_vote":true,
          "voting_power":1249,
          "last_vote_time":"2018-07-18T16:39:21",
-         "balance":"118.463 STEEM",
-         "savings_balance":"0.000 STEEM",
-         "sbd_balance":"67.717 SBD",
-         "sbd_seconds":"127094582318",
-         "sbd_seconds_last_update":"2018-07-18T14:13:15",
-         "sbd_last_interest_payment":"2018-06-20T12:01:15",
-         "savings_sbd_balance":"0.000 SBD",
-         "savings_sbd_seconds":"0",
-         "savings_sbd_seconds_last_update":"1970-01-01T00:00:00",
-         "savings_sbd_last_interest_payment":"1970-01-01T00:00:00",
+         "balance":"118.463 BEX",
+         "savings_balance":"0.000 BEX",
+         "bbd_balance":"67.717 BBD",
+         "bbd_seconds":"127094582318",
+         "bbd_seconds_last_update":"2018-07-18T14:13:15",
+         "bbd_last_interest_payment":"2018-06-20T12:01:15",
+         "savings_bbd_balance":"0.000 BBD",
+         "savings_bbd_seconds":"0",
+         "savings_bbd_seconds_last_update":"1970-01-01T00:00:00",
+         "savings_bbd_last_interest_payment":"1970-01-01T00:00:00",
          "savings_withdraw_requests":0,
-         "reward_sbd_balance":"0.005 SBD",
-         "reward_steem_balance":"0.009 STEEM",
+         "reward_bbd_balance":"0.005 BBD",
+         "reward_dpay_balance":"0.009 BEX",
          "reward_vesting_balance":"26.366463 VESTS",
-         "reward_vesting_steem":"0.013 STEEM",
+         "reward_vesting_dpay":"0.013 BEX",
          "vesting_shares":"4770940.577823 VESTS",
          "delegated_vesting_shares":"0.000000 VESTS",
          "received_vesting_shares":"16020356.484882 VESTS",
@@ -185,7 +185,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params
          "average_market_bandwidth":2406616155,
          "lifetime_market_bandwidth":"224370000000",
          "last_market_bandwidth_update":"2018-07-12T04:57:36",
-         "vesting_balance":"0.000 STEEM",
+         "vesting_balance":"0.000 BEX",
          "reputation":"305786119478594",
          "transfer_history":[],
          "market_history":[],
@@ -212,7 +212,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params
             "patrice",
             "pfunk",
             "pjau",
-            "teamsteem",
+            "teamdpay",
             "thecryptodrive",
             "themarkymark",
             "timcliff"

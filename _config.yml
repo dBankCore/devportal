@@ -1,9 +1,9 @@
 # ----
 # Site
 
-title: Steem Developer
-description: Steem Developer Documentation.
-url: https://developer.steem.io
+title: dPay Developer
+description: dPay Developer Documentation.
+url: https://developer.dpays.io
 google_analytics_key:
 permalink: /:categories/:title.html
 
@@ -104,4 +104,3 @@ types:
 
 kramdown:
   auto_ids: true
-  

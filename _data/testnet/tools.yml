@@ -1,15 +1,15 @@
 # Be sure to group each tool by testnet_id.
 # Possible places to watch for new testnet tools:
-# https://steemprojects.com/search/?q=testnet
-- name: Steemit, Inc. Live Testnet Endpoint
+# https://getdapps.io/search/?q=testnet
+- name: dPay Live Testnet Endpoint
   testnet_id: 46d82ab
-  url: https://testnet.steemitdev.com/
+  url: https://testnet.dpays.io/
   purpose: For anyone who wants to start testing their node and applications.
-- name: testnet.steem.vc
+- name: testnet.dpays.io
   testnet_id: 79276ae
-  url: https://steemprojects.com/projects/p/steem-testnet/
-  purpose: General bootstrapping to `testnet.steem.vc` maintained maintained by `@almost-digital`.
+  url: https://getdapps.io/projects/p/dpay-testnet/
+  purpose: General bootstrapping to `testnet.dpays.io` maintained maintained by `@jared`.
 - name: TestNET Condenser
   testnet_id: 79276ae
-  url: https://steemprojects.com/projects/p/testnet-condenser/
-  purpose: A condenser instance for `testnet.steem.vc`.
+  url: https://getdapps.io/projects/p/testnet-condenser/
+  purpose: A condenser instance for `testnet.dpays.io`.

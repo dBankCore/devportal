@@ -1,22 +1,22 @@
 ---
-title: jussi
+title: Jefferson
 position: 3
 description: A reverse proxy that forwards json-rpc requests.
 ---
 
-Jussi is a custom-built caching layer for use with `steemd` and other various services (such as [SBDS](/services/#services-sbds)).
+Jussi is a custom-built caching layer for use with `dpayd` and other various services (such as [DPDS](/services/#services-dpds)).
 
-The purpose of this document is to help developers and node operators set up their own jussi node within a docker container.
+The purpose of this document is to help developers and node operators set up their own jefferson node within a docker container.
 
 ### Intro
 
-Jussi is a reverse proxy that is situation between the API client and the `steemd` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
+Jussi is a reverse proxy that is situation between the API client and the `dpayd` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
 
 ### Sections
 
 * [Installation](#installation)
 * [Adding Upstreams](#adding-upstreams)
-* [Benefits of jussi](#benefits-of-jussi)
+* [Benefits of jefferson](#benefits-of-jefferson)
   * [TTL](#time-to-live)
   * [Multiple Routes](#multiple-routes)
   * [Retry](#retry)
@@ -25,17 +25,17 @@ Jussi is a reverse proxy that is situation between the API client and the `steem
 
 ### Installation<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-##### To run `jussi` locally:
+##### To run `jefferson` locally:
 
 ```bash
-git clone https://github.com/steemit/jussi.git
-cd jussi
-docker build -t="$USER/jussi:$(git rev-parse --abbrev-ref HEAD)" .
-docker run -itp 9000:8080 "$USER/jussi:$(git rev-parse --abbrev-ref HEAD)"
+git clone https://github.com/dpays/jefferson.git
+cd jefferson
+docker build -t="$USER/jefferson:$(git rev-parse --abbrev-ref HEAD)" .
+docker run -itp 9000:8080 "$USER/jefferson:$(git rev-parse --abbrev-ref HEAD)"
 ```
 
-<img src="/images/services-jussi/kitematic-example.png" width="100%" alt="Kitematic Example" />
-<small><em>jussi in a docker container as seen from [Kitematic for macOS](https://docs.docker.com/docker-for-mac/install/).</em></small>
+<img src="/images/services-jefferson/kitematic-example.png" width="100%" alt="Kitematic Example" />
+<small><em>jefferson in a docker container as seen from [Kitematic for macOS](https://docs.docker.com/docker-for-mac/install/).</em></small>
 
 ##### Try out your local configuration:
 
@@ -43,7 +43,7 @@ docker run -itp 9000:8080 "$USER/jussi:$(git rev-parse --abbrev-ref HEAD)"
 curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[8675309], "id":1}' http://localhost:9000
 ```
 
-See: [Running Condenser, Jussi and a new service locally + adding feature flags to Condenser](https://steemit.com/steemdev/@maitland/running-condenser-jussi-and-a-new-service-locally-adding-feature-flags-to-condenser)
+See: [Running Condenser, Jussi and a new service locally + adding feature flags to Condenser](https://dsite.io/dpaydev/@dpay/running-condenser-jefferson-and-a-new-service-locally-adding-feature-flags-to-condenser)
 
 ---
 
@@ -53,43 +53,43 @@ The default `DEV_config.json` is:
 
 ```json
 {
-   "limits":{"blacklist_accounts":["non-steemit"]},
+   "limits":{"blacklist_accounts":["non-dpay"]},
    "upstreams":[
       {
-         "name":"steemd",
+         "name":"dpayd",
          "translate_to_appbase":false,
-         "urls":[["steemd", "https://steemd.steemitdev.com"]],
+         "urls":[["dpayd", "https://dpayd.dpays.io"]],
          "ttls":[
-            ["steemd", 3],
-            ["steemd.login_api", -1],
-            ["steemd.network_broadcast_api", -1],
-            ["steemd.follow_api", 10],
-            ["steemd.market_history_api", 1],
-            ["steemd.database_api", 3],
-            ["steemd.database_api.get_block", -2],
-            ["steemd.database_api.get_block_header", -2],
-            ["steemd.database_api.get_content", 1],
-            ["steemd.database_api.get_state", 1],
-            ["steemd.database_api.get_state.params=['/trending']", 30],
-            ["steemd.database_api.get_state.params=['trending']", 30],
-            ["steemd.database_api.get_state.params=['/hot']", 30],
-            ["steemd.database_api.get_state.params=['/welcome']", 30],
-            ["steemd.database_api.get_state.params=['/promoted']", 30],
-            ["steemd.database_api.get_state.params=['/created']", 10],
-            ["steemd.database_api.get_dynamic_global_properties", 1]
+            ["dpayd", 3],
+            ["dpayd.login_api", -1],
+            ["dpayd.network_broadcast_api", -1],
+            ["dpayd.follow_api", 10],
+            ["dpayd.market_history_api", 1],
+            ["dpayd.database_api", 3],
+            ["dpayd.database_api.get_block", -2],
+            ["dpayd.database_api.get_block_header", -2],
+            ["dpayd.database_api.get_content", 1],
+            ["dpayd.database_api.get_state", 1],
+            ["dpayd.database_api.get_state.params=['/trending']", 30],
+            ["dpayd.database_api.get_state.params=['trending']", 30],
+            ["dpayd.database_api.get_state.params=['/hot']", 30],
+            ["dpayd.database_api.get_state.params=['/welcome']", 30],
+            ["dpayd.database_api.get_state.params=['/promoted']", 30],
+            ["dpayd.database_api.get_state.params=['/created']", 10],
+            ["dpayd.database_api.get_dynamic_global_properties", 1]
          ],
          "timeouts":[
-            ["steemd", 5],
-            ["steemd.network_broadcast_api", 0]
+            ["dpayd", 5],
+            ["dpayd.network_broadcast_api", 0]
          ],
          "retries": [
-            ["steemd", 3],
-            ["steemd.network_broadcast_api", 0]
+            ["dpayd", 3],
+            ["dpayd.network_broadcast_api", 0]
          ]
       },
       {
          "name":"appbase",
-         "urls":[["appbase", "https://steemd.steemitdev.com"]],
+         "urls":[["appbase", "https://dpayd.dpays.io"]],
          "ttls":[
             ["appbase", -2],
             ["appbase.block_api", -2],
@@ -126,9 +126,9 @@ Once the above upstream is added to the local config and docker has been built, 
 curl -s --data '{"jsonrpc":"2.0", "method":"foo.bar", "params":["baz"], "id":1}' http://localhost:9000
 ```
 
-**Note:** if you set `translate_to_appbase` as `true`, jussi will do the translation for you and that specific endpoint will work with libraries that don't yet support appbase.
+**Note:** if you set `translate_to_appbase` as `true`, jefferson will do the translation for you and that specific endpoint will work with libraries that don't yet support appbase.
 
-### Benefits of jussi<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### Benefits of Jefferson<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 #### Time To Live<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -136,25 +136,25 @@ Jussi can be configured with various `TTL` (Time To Live) schemes. A `TTL` is an
 
 | Upstream   | API                     | Method                          | Parameters         | TTL (seconds) |
 |------------|-------------------------|---------------------------------|--------------------|---------------|
-| `steemd`   | `login_api`             | _all_                           | _all_              | -1            |
-| `steemd`   | `network_broadcast_api` | _all_                           | _all_              | -1            |
-| `steemd`   | `follow_api`            | _all_                           | _all_              | 10            |
-| `steemd`   | `market_history_api`    | _all_                           | _all_              | 1             |
-| `steemd`   | `database_api`          | _all_                           | _all_              | 3             |
-| `steemd`   | `database_api`          | `get_block`                     | _all_              | -2            |
-| `steemd`   | `database_api`          | `get_block_header`              | _all_              | -2            |
-| `steemd`   | `database_api`          | `get_content`                   | _all_              | 1             |
-| `steemd`   | `database_api`          | `get_state`                     | _all_              | 1             |
-| `steemd`   | `database_api`          | `get_state`                     | `'/trending'`      | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'trending'`       | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/hot'`           | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/welcome'`       | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/promoted'`      | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/created'`       | 10            |
-| `steemd`   | `database_api`          | `get_dynamic_global_properties` | _all_              | 1             |
+| `dpayd`    | `login_api`             | _all_                           | _all_              | -1            |
+| `dpayd`    | `network_broadcast_api` | _all_                           | _all_              | -1            |
+| `dpayd`    | `follow_api`            | _all_                           | _all_              | 10            |
+| `dpayd`    | `market_history_api`    | _all_                           | _all_              | 1             |
+| `dpayd`    | `database_api`          | _all_                           | _all_              | 3             |
+| `dpayd`    | `database_api`          | `get_block`                     | _all_              | -2            |
+| `dpayd`    | `database_api`          | `get_block_header`              | _all_              | -2            |
+| `dpayd`    | `database_api`          | `get_content`                   | _all_              | 1             |
+| `dpayd`    | `database_api`          | `get_state`                     | _all_              | 1             |
+| `dpayd`    | `database_api`          | `get_state`                     | `'/trending'`      | 30            |
+| `dpayd`    | `database_api`          | `get_state`                     | `'trending'`       | 30            |
+| `dpayd`    | `database_api`          | `get_state`                     | `'/hot'`           | 30            |
+| `dpayd`    | `database_api`          | `get_state`                     | `'/welcome'`       | 30            |
+| `dpayd`    | `database_api`          | `get_state`                     | `'/promoted'`      | 30            |
+| `dpayd`    | `database_api`          | `get_state`                     | `'/created'`       | 10            |
+| `dpayd`    | `database_api`          | `get_dynamic_global_properties` | _all_              | 1             |
 | `overseer` | _all_                   | _all_                           | _all_              | 5             |
 | `conveyor` | _all_                   | _all_                           | _all_              | -1            |
-| `sbds`     | _all_                   | _all_                           | _all_              | 3             |
+| `dpds`     | _all_                   | _all_                           | _all_              | 3             |
 | `hivemind` | _all_                   | _all_                           | _all_              | 3             |
 | `yo`       | _all_                   | _all_                           | _all_              | 3             |
 
@@ -168,7 +168,7 @@ Some methods and parameters have their own `TTL` that overrides the general defa
 * `-1` won't be cached
 * `-2` will be cached without expiration only if it is `irreversible` in terms of blockchain consensus
 
-If you have a local copy of jussi (see: [Installation](#installation)), you can change these defaults by modifying `DEV_config.json`.
+If you have a local copy of jefferson (see: [Installation](#installation)), you can change these defaults by modifying `DEV_config.json`.
 
 #### Multiple Routes<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -177,7 +177,7 @@ Each `urls` key can have multiple endpoints for each namespace.  For example:
 ```json
 {
   "urls":[
-    ["appbase", "https://api.steemitdev.com"]
+    ["appbase", "https://api.dpays.io"]
   ]
 }
 ```
@@ -187,9 +187,9 @@ Each `urls` key can have multiple endpoints for each namespace.  For example:
 ```json
 {
   "urls":[
-    ["appbase","https://api.steemitdev.com"],
-    ["appbase.condenser_api.get_account_history","https://api-for-account-history.steemitdev.com"],
-    ["appbase.condenser_api.get_ops_in_block","https://api-for-get-ops-in-block.steemitdev.com"]
+    ["appbase","https://api.dpays.io"],
+    ["appbase.condenser_api.get_account_history","https://api-for-account-history.dpays.io"],
+    ["appbase.condenser_api.get_ops_in_block","https://api-for-get-ops-in-block.dpays.io"]
   ]
 }
 ```
@@ -200,16 +200,16 @@ In these examples, the methods `get_account_history` and `get_ops_in_block` rout
 
 Adding a `retries` element defines the number of retry attempts, where `0` (or absent) means no retry.  The maximum number of retries is `3`.
 
-Note that retrying broadcast methods is not recommended, which is why the example explicitly sets `steemd.network_broadcast_api` to `0`.
+Note that retrying broadcast methods is not recommended, which is why the example explicitly sets `dpayd.network_broadcast_api` to `0`.
 
 #### json-rpc batch<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Normally, a request is made with a JSON Object (`{}`).  But jussi also supports batch requests, which is constructed with a JSON Array of Objects (`[{}]`).
-  
+Normally, a request is made with a JSON Object (`{}`).  But jefferson also supports batch requests, which is constructed with a JSON Array of Objects (`[{}]`).
+
 For example, this would be a typical, non-batched JSON Object request that asks for a single block:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1}' https://api.dpays.io
 ```
 
 ```json
@@ -219,7 +219,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[
    "result":{
       "previous":"0000000000000000000000000000000000000000",
       "timestamp":"2016-03-24T16:05:00",
-      "witness":"initminer",
+      "witness":"dpay",
       "transaction_merkle_root":"0000000000000000000000000000000000000000",
       "extensions":[
 
@@ -229,7 +229,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[
 
       ],
       "block_id":"0000000109833ce528d5bbfb3f6225b39ee10086",
-      "signing_key":"STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
+      "signing_key":"DWB8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
       "transaction_ids":[
 
       ]
@@ -240,7 +240,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[
 To request more than one block using the batch construct, wrap each call in a JSON Array, that asks for two blocks in one request:
 
 ```bash
-curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[2], "id":2}]' https://api.steemit.com
+curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[2], "id":2}]' https://api.dpays.io
 ```
 
 ```json
@@ -261,7 +261,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 
          ],
          "block_id":"0000000109833ce528d5bbfb3f6225b39ee10086",
-         "signing_key":"STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
+         "signing_key":"DWB8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
          "transaction_ids":[
 
          ]
@@ -283,7 +283,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 
          ],
          "block_id":"00000002ed04e3c3def0238f693931ee7eebbdf1",
-         "signing_key":"STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
+         "signing_key":"DWB8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
          "transaction_ids":[
 
          ]
@@ -295,7 +295,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 Error responses are returned in the JSON Array response as well.  Notice the `"WRONG"` parameter in the second element.  The first block is returned as expected, the second one generates an error.
 
 ```bash
-curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":["WRONG"], "id":2}]' https://api.steemit.com
+curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":["WRONG"], "id":2}]' https://api.dpays.io
 ```
 
 ```json
@@ -315,7 +315,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 
          ],
          "block_id":"0000000109833ce528d5bbfb3f6225b39ee10086",
-         "signing_key":"STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
+         "signing_key":"DWB8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
          "transaction_ids":[
 
          ]
@@ -386,18 +386,18 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 
 * Batch requests are limited to a maximum of 50 request elements.
   * *Also see: [json-rpc batch specification](http://www.jsonrpc.org/specification#batch)*
-* Repository: [github.com/steemit/jussi](https://github.com/steemit/jussi)
+* Repository: [github.com/dpays/jefferson](https://github.com/dpays/jefferson)
 
 ---
 
 *Latin*
 
->     jussi
-> 
+>     jefferson
+>
 >     noun
-> 
+>
 >     declension: 2nd declension
 >     gender: neuter
-> 
+>
 >     Definitions:
 >       1. order, command, decree, ordinance, law

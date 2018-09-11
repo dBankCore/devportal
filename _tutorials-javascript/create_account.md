@@ -1,40 +1,40 @@
 ---
 title: 'JS: Create Account'
 position: 26
-description: '_Create Steem account using Steemconnect as well as with client-side signing._'
+description: '_Create dPay account using dPayID as well as with client-side signing._'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Create Account](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/26_create_account) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Create Account](https://github.com/dpays/developer-docs-tutorials-js/tree/master/tutorials/26_create_account) can be downloaded as part of the [JS tutorials repository](https://github.com/dpays/developer-docs-tutorials-js).</span>
 <br>
 
 
 
-This tutorial runs on the main Steem blockchain. And accounts queried/searched are real accounts and creator account show have sufficient liquid balance to create new account.
+This tutorial runs on the main dPay blockchain. And accounts queried/searched are real accounts and creator account show have sufficient liquid balance to create new account.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dsteem` library to pull account from the Steem blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial.
+This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `ddpays` library to pull account from the dPay blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
+1.  [**App setup**](#app-setup) Setup `ddpays` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Generate private keys**](#generate-keys) Generate proper keys for new account
-4.  [**Create account**](#create-account) Create account via Client-side or Steemconnect
+4.  [**Create account**](#create-account) Create account via Client-side or dPayID
 
 #### 1. App setup <a name="app-setup"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `ddpays` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const ddpays = require('ddpays');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    '38f14b346eb697ba04ae0f5adcfaa0a437ed3711197704aa256a14cb9b4a8f26';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new ddpays.Client('https://api.dpays.io');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -64,10 +64,10 @@ After we know that account is available to register, we will fill form with pass
 const username = document.getElementById('username').value;
 const password = document.getElementById('password').value;
 
-const ownerKey = dsteem.PrivateKey.fromLogin(username, password, 'owner');
-const activeKey = dsteem.PrivateKey.fromLogin(username, password, 'active');
-const postingKey = dsteem.PrivateKey.fromLogin(username, password, 'posting');
-const memoKey = dsteem.PrivateKey.fromLogin(username, password, 'memo');
+const ownerKey = ddpays.PrivateKey.fromLogin(username, password, 'owner');
+const activeKey = ddpays.PrivateKey.fromLogin(username, password, 'active');
+const postingKey = ddpays.PrivateKey.fromLogin(username, password, 'posting');
+const memoKey = ddpays.PrivateKey.fromLogin(username, password, 'memo');
 
 const ownerAuth = {
     weight_threshold: 1,
@@ -93,7 +93,7 @@ Above script shows, how to properly setup private keys of new account.
 After following all steps properly, we can now submit transaction to create new account.
 
 ```javascript
-const privateKey = dsteem.PrivateKey.fromString(
+const privateKey = ddpays.PrivateKey.fromString(
     document.getElementById('wif').value
 );
 const op = [

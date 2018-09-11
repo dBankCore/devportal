@@ -1,32 +1,32 @@
-require 'steem'
+require 'dpay'
 
 module Scrape
-  
+
   # Scrapes all known methods for all known APIs and saves them to as `.yml`.
   class ApiDefinitionsJob
     attr_accessor :url, :api_data_path, :jsonrpc
-    
+
     DEFAULT_URL = 'https://appbasetest.timcliff.com'
     DEFAULT_API_DATA_PATH = '_data/apidefinitions'
-    
+
     def initialize(options = {url: DEFAULT_URL, api_data_path: DEFAULT_API_DATA_PATH})
       @url = options[:url] || DEFAULT_URL
       @api_data_path = options[:api_data_path] || DEFAULT_API_DATA_PATH
-      @jsonrpc = Steem::Jsonrpc.new(url: @url)
+      @jsonrpc = DPay::Jsonrpc.new(url: @url)
     end
-    
+
     # Execute the job.
     #
     # @return [Integer] total number of methods added or changed in this pass
     def perform
       method_change_count = 0
       all_signatures = jsonrpc.get_all_signatures
-      
+
       apis.each do |api, methods|
         signatures = all_signatures.select { |k, v| k == api }
         file_name = "#{api_data_path}/#{api}.yml"
         puts "Definitions for: #{api}, methods: #{methods.size}"
-        
+
         dirty, yml = if File.exist?(file_name)
           [false, YAML.load_file(file_name)]
         else
@@ -37,13 +37,13 @@ module Scrape
             'methods' => []
           ]]
         end
-        
+
         signatures.each do |_api, signature|
           method = signature.keys.first
           method_name = "#{api}.#{method}"
           signature = signature.values.first
           existing_api_method = yml[0]['methods'].reverse.find{|e| e['api_method'] == method_name}
-          
+
           if existing_api_method
             parameter_json = signature.args.to_json
             expected_response_json = signature.ret.to_json
@@ -66,7 +66,7 @@ module Scrape
           else
             puts "\tAdding: #{method}"
           end
-          
+
           dirty = true
           yml[0]['methods'] << {
             'api_method' => method_name,
@@ -74,18 +74,18 @@ module Scrape
             'parameter_json' => signature.args.to_json,
             'expected_response_json' => signature.ret.to_json
           }
-          
+
           method_change_count += 1
         end
-        
+
         yml[0]['methods'].each do |method|
           existing_api, existing_method = method['api_method'].split('.')
-          
+
           unless methods.include?(existing_method.to_sym)
             puts "\tDropped method: #{existing_method} (recommend removal from #{file_name})"
           end
         end
-        
+
         next unless dirty
 
         File.open(file_name, 'w+') do |f|
@@ -94,22 +94,22 @@ module Scrape
           f.write yml.to_yaml
         end
       end
-      
+
       method_change_count
     end
   private
     def apis
       apis = {}
-      
+
       jsonrpc.get_methods do |methods|
         methods.each do |method|
           api, method = method.split('.').map(&:to_sym)
-        
+
           apis[api] ||= []
           apis[api] << method
         end
       end
-      
+
       apis
     end
   end

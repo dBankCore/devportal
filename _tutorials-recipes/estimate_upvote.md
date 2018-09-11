@@ -1,24 +1,24 @@
 ---
 title: Estimate the value of an upvote
 position: 1
-description: Calculate the approximate value of an upvote on Steem
+description: Calculate the approximate value of an upvote on dPay
 exclude: true
 layout: full
 
 ---
 
-*By the end of this recipe you should know how to estimate value of each vote on Steem.*
+*By the end of this recipe you should know how to estimate value of each vote on dPay.*
 
 This recipe will take you through the process of fetching necessary data and formulating estimation.
 
-## Intro 
+## Intro
 
-Calculating value of each vote depends on multiple factors. Reward fund, recent claims, account's total vests, rate of the sbd, voting power and weight of the vote. It is quite useful information for users to see and estimate. All of the data is possible to get via available APIs.
+Calculating value of each vote depends on multiple factors. Reward fund, recent claims, account's total vests, rate of the BBD, voting power and weight of the vote. It is quite useful information for users to see and estimate. All of the data is possible to get via available APIs.
 
 ## Steps
 
 1. **Get Reward Fund** Current reward fund information is crucial part of estimation
-1. **Get Account** Steem power and voting power is another important info
+1. **Get Account** BEX power and voting power is another important info
 1. **Feed history** To get price rate reported by witnesses
 1. **Final calculation** Formulate all information we have
 
@@ -33,7 +33,7 @@ The response we're working with will look like:
 {
 	"id":0,
 	"name":"post",
-	"reward_balance":"741222.051 STEEM",
+	"reward_balance":"741222.051 BEX",
 	"recent_claims":"457419472820935017",
 	"last_update":"2018-05-23T12:08:36",
 	"content_constant":"2000000000000",
@@ -54,7 +54,7 @@ The response example will look like:
 [
   {
     "id": 9660,
-    "name": "steemitblog",
+    "name": "dsiteblog",
     "owner": {
       "weight_threshold": 1,
       "account_auths": [
@@ -65,7 +65,7 @@ The response example will look like:
       ],
       "key_auths": [
         [
-          "STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G",
+          "DWB65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G",
           1
         ]
       ]
@@ -75,7 +75,7 @@ The response example will look like:
       "account_auths": [],
       "key_auths": [
         [
-          "STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G",
+          "DWB65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G",
           1
         ]
       ]
@@ -90,31 +90,31 @@ The response example will look like:
       ],
       "key_auths": [
         [
-          "STM4yfYEjUoey4PLrKhnKFo1XKQZtZ77fWLnbGTr2mAUaSt2Sx9W4",
+          "DWB4yfYEjUoey4PLrKhnKFo1XKQZtZ77fWLnbGTr2mAUaSt2Sx9W4",
           1
         ],
         [
-          "STM5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3",
+          "DWB5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3",
           1
         ],
         [
-          "STM5VwLXkNQf17sQ2XuxScdxruwBy1jak2mDxCjmyfYMNhm1WzPzN",
+          "DWB5VwLXkNQf17sQ2XuxScdxruwBy1jak2mDxCjmyfYMNhm1WzPzN",
           1
         ],
         [
-          "STM5ke2kzgwBmysSqCNM6zRABi8SNpaJEtnFXuTtRcU3Uvf47481z",
+          "DWB5ke2kzgwBmysSqCNM6zRABi8SNpaJEtnFXuTtRcU3Uvf47481z",
           1
         ]
       ]
     },
-    "memo_key": "STM5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3",
+    "memo_key": "DWB5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3",
     "json_metadata": "",
     "proxy": "",
     "last_owner_update": "2017-03-17T18:19:18",
     "last_account_update": "2017-03-17T18:19:18",
     "created": "2016-05-24T18:54:24",
     "mined": false,
-    "recovery_account": "steem",
+    "recovery_account": "dpay",
     "last_account_recovery": "2016-07-19T19:48:54",
     "reset_account": "null",
     "comment_count": 0,
@@ -123,21 +123,21 @@ The response example will look like:
     "can_vote": true,
     "voting_power": 9800,
     "last_vote_time": "2018-05-22T20:10:45",
-    "balance": "810.371 STEEM",
-    "savings_balance": "0.000 STEEM",
-    "sbd_balance": "4613.426 SBD",
-    "sbd_seconds": "10828300402329",
-    "sbd_seconds_last_update": "2018-05-22T22:34:24",
-    "sbd_last_interest_payment": "2018-04-25T18:26:15",
-    "savings_sbd_balance": "0.000 SBD",
-    "savings_sbd_seconds": "0",
-    "savings_sbd_seconds_last_update": "1970-01-01T00:00:00",
-    "savings_sbd_last_interest_payment": "1970-01-01T00:00:00",
+    "balance": "810.371 BEX",
+    "savings_balance": "0.000 BEX",
+    "bbd_balance": "4613.426 BBD",
+    "bbd_seconds": "10828300402329",
+    "bbd_seconds_last_update": "2018-05-22T22:34:24",
+    "bbd_last_interest_payment": "2018-04-25T18:26:15",
+    "savings_bbd_balance": "0.000 BBD",
+    "savings_bbd_seconds": "0",
+    "savings_bbd_seconds_last_update": "1970-01-01T00:00:00",
+    "savings_bbd_last_interest_payment": "1970-01-01T00:00:00",
     "savings_withdraw_requests": 0,
-    "reward_sbd_balance": "79.490 SBD",
-    "reward_steem_balance": "0.000 STEEM",
+    "reward_bbd_balance": "79.490 BBD",
+    "reward_dpay_balance": "0.000 BEX",
     "reward_vesting_balance": "608341.169185 VESTS",
-    "reward_vesting_steem": "293.101 STEEM",
+    "reward_vesting_dpay": "293.101 BEX",
     "vesting_shares": "93540695.469156 VESTS",
     "delegated_vesting_shares": "0.000000 VESTS",
     "received_vesting_shares": "0.000000 VESTS",
@@ -163,7 +163,7 @@ The response example will look like:
     "average_market_bandwidth": 1170000000,
     "lifetime_market_bandwidth": 1170000000,
     "last_market_bandwidth_update": "2016-07-27T15:10:09",
-    "vesting_balance": "0.000 STEEM",
+    "vesting_balance": "0.000 BEX",
     "reputation": "146151592482665",
     "transfer_history": [],
     "market_history": [],
@@ -187,8 +187,8 @@ The response example will look like:
 
 ```json
 {
-  "base": "3.029 SBD",
-  "quote": "1.000 STEEM"
+  "base": "3.029 BBD",
+  "quote": "1.000 BEX"
 }
 ```
 
@@ -201,7 +201,7 @@ total_vests = vesting_shares + received_vesting_shares - delegated_vesting_share
 final_vest = total_vests * 1e6
 power = (voting_power * weight / 10000) / 50
 rshares = power * final_vest / 10000
-estimate = rshares / recent_claims * reward_balance * sbd_median_price
+estimate = rshares / recent_claims * reward_balance * bbd_median_price
 ```
 
 That's all there is to it.

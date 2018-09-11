@@ -4,7 +4,7 @@ position: 1
 description: 'This example will output blog details to the terminal for the author specified, limited to five results.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Blog Feed](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/01_blog_feed) can be downloaded as part of the [RB tutorials repository](https://github.com/steemit/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Blog Feed](https://github.com/dpays/developer-docs-tutorials-rb/tree/master/tutorials/01_blog_feed) can be downloaded as part of the [RB tutorials repository](https://github.com/dpays/developer-docs-tutorials-rb).</span>
 <br>
 
 
@@ -21,43 +21,43 @@ Finally, it creates the canonical URL by combining `parent_permlink`, `author`, 
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.dpays.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
+git clone git@github.com:dpays/developer-docs-tutorials-rb.git
 cd devportal-tutorials-rb/tutorials/01_blog_feed
 bundle install
-ruby blog_feed.rb steemitblog
+ruby blog_feed.rb dsiteblog
 ```
 
 ### Example Output
 
 ```
 2018-03-24 17:30:36 UTC
-  Post: Happy 2nd Birthday Steem Blockchain
-  By: steemitblog
+  Post: Happy 2nd Birthday dPay Blockchain
+  By: dsiteblog
   Words: 301
-  https://steemit.com/steem/@steemitblog/happy-2nd-birthday-steem-blockchain
+  https://dsite.io/dpay/@dsiteblog/happy-2nd-birthday-dpay-blockchain
 2018-03-07 20:56:36 UTC
-  Post: Join Team Steemit at TokenFest!
-  By: steemitblog
+  Post: Join Team dSite at TokenFest!
+  By: dsiteblog
   Words: 104
-  https://steemit.com/steemit/@steemitblog/join-team-steemit-at-tokenfest
+  https://dsite.io/dsite/@dsiteblog/join-team-dsite-at-tokenfest
 2018-02-27 20:18:36 UTC
   Post: Smart Media Token Development
-  By: steemitblog
+  By: dsiteblog
   Words: 699
-  https://steemit.com/smt/@steemitblog/smart-media-token-development
+  https://dsite.io/smt/@dsiteblog/smart-media-token-development
 2018-02-25 20:55:24 UTC
-  Reblog: I filmed this video of @ned @pkattera and @sneak talking about the SMTs and the future of Steemit
+  Reblog: I filmed this video of @ned @pkattera and @sneak talking about the SMTs and the future of dSite
   By: ruwan
   Words: 89
-  https://steemit.com/steemit/@ruwan/i-filmed-this-video-of-ned-pkattera-and-sneak-talking-about-the-smts-and-the-future-of-steemit
+  https://dsite.io/dsite/@ruwan/i-filmed-this-video-of-ned-pkattera-and-sneak-talking-about-the-smts-and-the-future-of-dsite
 2018-02-22 17:41:00 UTC
-  Post: STEEM 및 SBD가 GOPAX에 상장되었습니다
-  By: steemitblog
+  Post: BEX 및 BBD가 GOPAX에 상장되었습니다
+  By: dsiteblog
   Words: 317
-  https://steemit.com/gopax/@steemitblog/steem-sbd-gopa
+  https://dsite.io/gopax/@dsiteblog/bex-bbd-gopa
 ```
 
 ---

@@ -4,37 +4,37 @@ position: 2
 description: 'Get post details from list of posts from the blockchain with `created` filter and tag then display selected post details.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/02_get_post_details) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/02_get_post_details) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
-We will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts filtered by a _filter_ and _tag_
+We will explain and show you how to access the **DPay** blockchain using the [dpay-python](https://github.com/dpays/dpay-python) library to fetch list of posts filtered by a _filter_ and _tag_
 
 ## Intro
 
-Steem python library has built-in function to get details of post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one option/post to get its details. `get_content` function fetches latest state of the post and delivers its details. Note that `get_discussions_by_created` filter is used for fetching 5 posts which by default contains details of each post, but for purpose of this tutorial we will showcase `get_content` function to fetch details.
+DPay python library has built-in function to get details of post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one option/post to get its details. `get_content` function fetches latest state of the post and delivers its details. Note that `get_discussions_by_created` filter is used for fetching 5 posts which by default contains details of each post, but for purpose of this tutorial we will showcase `get_content` function to fetch details.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) - Library install and import
-1.  [**Post list**](#post-list) - List of posts to select from created filter 
+1.  [**Post list**](#post-list) - List of posts to select from created filter
 1.  [**Post details**](#post-details) - Get post details for selected post
 1.  [**Print output**](#print-output) - Print results in output
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `dpay` - dpay-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize DPay class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize DPay class
+    from dpay import DPay
 
-    s = Steem()
+    s = DPay()
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -86,16 +86,16 @@ The example of result returned from the service is a `JSON` object with the foll
 ```json
 {
     "id": 37338948,
-    "author": "steemitblog",
-    "permlink": "join-team-steemit-at-tokenfest",
-    "category": "steemit",
+    "author": "dsiteblog",
+    "permlink": "join-team-dsite-at-tokenfest",
+    "category": "dsite",
     "parent_author": "",
-    "parent_permlink": "steemit",
-    "title": "Join Team Steemit at TokenFest!",
+    "parent_permlink": "dsite",
+    "title": "Join Team dSite at TokenFest!",
     "body":
-        "<a href=\"https://tokenfest.adria.digital\"><img src=\"https://i.imgur.com/fOScDIW.png\"/></a>\n\nHello Steemians! If you’d like to meet Team Steemit live-in-person, or are just interested in attending what promises to be a great blockchain conference, join us at <a href=\"https://tokenfest.adria.digital/\">TokenFest</a> in San Francisco from March 15th to 16th. \n\nSteemit CEO, Ned Scott, will be participating in a fireside chat alongside Steemit’s CTO, Harry Schmidt, as well as the creator of Utopian.io, Diego Pucci. Steemit will also be hosting the opening party on Thursday night and we’d certainly love to meet as many of you as possible IRL, so head on over to https://tokenfest.adria.digital/ and get your tickets while you can. \n\n*Team Steemit*",
+        "<a href=\"https://tokenfest.adria.digital\"><img src=\"https://i.imgur.com/fOScDIW.png\"/></a>\n\nTest Post",
     "json_metadata":
-        "{\"tags\":[\"steemit\",\"tokenfest\",\"conference\"],\"image\":[\"https://i.imgur.com/fOScDIW.png\"],\"links\":[\"https://tokenfest.adria.digital\",\"https://tokenfest.adria.digital/\"],\"app\":\"steemit/0.1\",\"format\":\"markdown\"}",
+        "{\"tags\":[\"dsite\",\"tokenfest\",\"conference\"],\"image\":[\"https://i.imgur.com/fOScDIW.png\"],\"links\":[\"https://tokenfest.adria.digital\",\"https://tokenfest.adria.digital/\"],\"app\":\"dsite/0.1\",\"format\":\"markdown\"}",
     "last_update": "2018-03-07T23:22:54",
     "created": "2018-03-07T20:56:36",
     "active": "2018-03-13T01:40:21",
@@ -110,24 +110,24 @@ The example of result returned from the service is a `JSON` object with the foll
     "max_cashout_time": "1969-12-31T23:59:59",
     "total_vote_weight": 3462435,
     "reward_weight": 10000,
-    "total_payout_value": "0.000 SBD",
-    "curator_payout_value": "0.000 SBD",
+    "total_payout_value": "0.000 BBD",
+    "curator_payout_value": "0.000 BBD",
     "author_rewards": 0,
     "net_votes": 77,
     "root_comment": 37338948,
-    "max_accepted_payout": "0.000 SBD",
-    "percent_steem_dollars": 10000,
+    "max_accepted_payout": "0.000 BBD",
+    "percent_dpay_dollars": 10000,
     "allow_replies": true,
     "allow_votes": true,
     "allow_curation_rewards": true,
     "beneficiaries": [],
-    "url": "/steemit/@steemitblog/join-team-steemit-at-tokenfest",
-    "root_title": "Join Team Steemit at TokenFest!",
-    "pending_payout_value": "46.436 SBD",
-    "total_pending_payout_value": "0.000 STEEM",
+    "url": "/dsite/@dsiteblog/join-team-dsite-at-tokenfest",
+    "root_title": "Join Team dSite at TokenFest!",
+    "pending_payout_value": "46.436 BBD",
+    "total_pending_payout_value": "0.000 BEX",
     "active_votes": [
         {
-            "voter": "steemitblog",
+            "voter": "dsiteblog",
             "weight": 0,
             "rshares": "1870813909383",
             "percent": 10000,
@@ -145,11 +145,11 @@ The example of result returned from the service is a `JSON` object with the foll
     ],
     "replies": [],
     "author_reputation": "128210130644387",
-    "promoted": "0.000 SBD",
+    "promoted": "0.000 BBD",
     "body_length": 754,
     "reblogged_by": []
 }
-'Selected: steemitblog/join-team-steemit-at-tokenfest'
+'Selected: dsiteblog/join-team-dsite-at-tokenfest'
 ```
 
 From this result you have access to everything associated to the post including additional metadata which is a `JSON` string (that must be decoded to use), `active_votes` info, post title, body, etc. details that can be used in further development of application with Python.
@@ -158,7 +158,7 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
+1.  [review dev requirements](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
 1.  clone this repo
 1.  `cd tutorials/02_get_post_details`
 1.  `pip install -r requirements.txt`

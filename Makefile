@@ -1,7 +1,7 @@
 default: serve
 
 serve: vendor
-	bundle exec jekyll serve --port 8080
+	bundle exec jekyll serve --port 5600
 
 vendor:
 	bundle install --path vendor/bundle

@@ -4,16 +4,16 @@ position: 1
 description: 'Tutorial pulls a list of the posts from the blockchain with selected filter and tag then displays output.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/01_get_posts) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/01_get_posts) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
-This tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts filtered by a _filter_ and _tag_
+This tutorial will explain and show you how to access the **DPay** blockchain using the [dpay-python](https://github.com/dpays/dpay-python) library to fetch list of posts filtered by a _filter_ and _tag_
 
 ## Intro
 
-In Steem there are built-in filters `trending`, `hot`, `created`, `active`, `promoted` etc. which helps us to get list of posts. `get_discussions_by_trending(query)`, `get_discussions_by_hot(query)`, `get_discussions_by_created(query)`, etc. functions are built-in in official library `steem-python` that we are going to use throughout all Python tutorials. 
+In DPay there are built-in filters `trending`, `hot`, `created`, `active`, `promoted` etc. which helps us to get list of posts. `get_discussions_by_trending(query)`, `get_discussions_by_hot(query)`, `get_discussions_by_created(query)`, etc. functions are built-in in official library `dpay-python` that we are going to use throughout all Python tutorials.
 
 
 ## Steps
@@ -25,17 +25,17 @@ In Steem there are built-in filters `trending`, `hot`, `created`, `active`, `pro
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `dpay` - dpay-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize DPay class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize DPay class
+    from dpay import DPay
 
-    s = Steem()
+    s = DPay()
 ```
 
 #### 2. Filters list <a name="filters-list"></a>
@@ -54,7 +54,7 @@ This will show us list of filters to select in terminal/command prompt. And afte
 
 #### 3. Query details <a name="query-details"></a>
 
-Next we will form a query. In Steem, 
+Next we will form a query. In DPay,
 
 *   You can add a tag to filter the posts that you receive from the server
 *   You can also limit the amount of results you would like to receive from the query
@@ -91,16 +91,16 @@ The example of result returned from the service is a `JSON` object with the foll
 [
     {
         "id": 37338948,
-        "author": "steemitblog",
-        "permlink": "join-team-steemit-at-tokenfest",
-        "category": "steemit",
+        "author": "dsiteblog",
+        "permlink": "join-team-dsite-at-tokenfest",
+        "category": "dsite",
         "parent_author": "",
-        "parent_permlink": "steemit",
-        "title": "Join Team Steemit at TokenFest!",
+        "parent_permlink": "dsite",
+        "title": "Join Team dSite at TokenFest!",
         "body":
-            "<a href=\"https://tokenfest.adria.digital\"><img src=\"https://i.imgur.com/fOScDIW.png\"/></a>\n\nHello Steemians! If you’d like to meet Team Steemit live-in-person, or are just interested in attending what promises to be a great blockchain conference, join us at <a href=\"https://tokenfest.adria.digital/\">TokenFest</a> in San Francisco from March 15th to 16th. \n\nSteemit CEO, Ned Scott, will be participating in a fireside chat alongside Steemit’s CTO, Harry Schmidt, as well as the creator of Utopian.io, Diego Pucci. Steemit will also be hosting the opening party on Thursday night and we’d certainly love to meet as many of you as possible IRL, so head on over to https://tokenfest.adria.digital/ and get your tickets while you can. \n\n*Team Steemit*",
+            "<a href=\"https://tokenfest.adria.digital\"><img src=\"https://i.imgur.com/fOScDIW.png\"/></a>\n\nTest Post",
         "json_metadata":
-            "{\"tags\":[\"steemit\",\"tokenfest\",\"conference\"],\"image\":[\"https://i.imgur.com/fOScDIW.png\"],\"links\":[\"https://tokenfest.adria.digital\",\"https://tokenfest.adria.digital/\"],\"app\":\"steemit/0.1\",\"format\":\"markdown\"}",
+            "{\"tags\":[\"dsite\",\"tokenfest\",\"conference\"],\"image\":[\"https://i.imgur.com/fOScDIW.png\"],\"links\":[\"https://tokenfest.adria.digital\",\"https://tokenfest.adria.digital/\"],\"app\":\"dsite/0.1\",\"format\":\"markdown\"}",
         "last_update": "2018-03-07T23:22:54",
         "created": "2018-03-07T20:56:36",
         "active": "2018-03-13T01:40:21",
@@ -115,24 +115,24 @@ The example of result returned from the service is a `JSON` object with the foll
         "max_cashout_time": "1969-12-31T23:59:59",
         "total_vote_weight": 3462435,
         "reward_weight": 10000,
-        "total_payout_value": "0.000 SBD",
-        "curator_payout_value": "0.000 SBD",
+        "total_payout_value": "0.000 BBD",
+        "curator_payout_value": "0.000 BBD",
         "author_rewards": 0,
         "net_votes": 77,
         "root_comment": 37338948,
-        "max_accepted_payout": "0.000 SBD",
-        "percent_steem_dollars": 10000,
+        "max_accepted_payout": "0.000 BBD",
+        "percent_dpay_dollars": 10000,
         "allow_replies": true,
         "allow_votes": true,
         "allow_curation_rewards": true,
         "beneficiaries": [],
-        "url": "/steemit/@steemitblog/join-team-steemit-at-tokenfest",
-        "root_title": "Join Team Steemit at TokenFest!",
-        "pending_payout_value": "46.436 SBD",
-        "total_pending_payout_value": "0.000 STEEM",
+        "url": "/dsite/@dsiteblog/join-team-dsite-at-tokenfest",
+        "root_title": "Join Team dSite at TokenFest!",
+        "pending_payout_value": "46.436 BBD",
+        "total_pending_payout_value": "0.000 BEX",
         "active_votes": [
             {
-                "voter": "steemitblog",
+                "voter": "dsiteblog",
                 "weight": 0,
                 "rshares": "1870813909383",
                 "percent": 10000,
@@ -150,7 +150,7 @@ The example of result returned from the service is a `JSON` object with the foll
         ],
         "replies": [],
         "author_reputation": "128210130644387",
-        "promoted": "0.000 SBD",
+        "promoted": "0.000 BBD",
         "body_length": 754,
         "reblogged_by": []
     },
@@ -167,7 +167,7 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
+1.  [review dev requirements](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
 1.  clone this repo
 1.  `cd tutorials/01_get_posts`
 1.  `pip install -r requirements.txt`

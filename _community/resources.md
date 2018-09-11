@@ -5,148 +5,136 @@ position: 2
 
 ### Libraries, tools
 
-**Radiator** - [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator)
+**Radiator** - [https://github.com/dpays/radiator](https://github.com/dpays/radiator)
 
-Radiator is a Ruby API client to interact with the steem blockchain.
-
----
-
-**SteemJS** - [https://github.com/svk31/steemjs-lib](https://github.com/svk31/steemjs-lib)
-
-Pure JavaScript Steem crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
+Radiator is a Ruby API client to interact with the dPay blockchain.
 
 ---
 
-**Beem** - [https://github.com/holgern/beem](https://github.com/holgern/beem)
+**DPayJS** - [https://github.com/dpays/dpayjs](https://github.com/dpays/dpayjs)
 
-A python library to interact with the STEEM blockchain. It includes the CLI tool beempy.
-
----
-
-**Piston-cli** - [https://github.com/xeroc/piston-cli](https://github.com/xeroc/piston-cli)
-
-This python library is unmaintained! Swiss army knife for interacting with the STEEM blockchain.
+Pure JavaScript dPay crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
 
 ---
 
-**ChainSync** - [https://github.com/aaroncox/chainsync](https://github.com/aaroncox/chainsync)
+**Bexpy** - [https://github.com/dpays/bexpy](https://github.com/dpays/bexpy)
+
+A python library to interact with the dPay blockchain. It includes the CLI tool Bexpy.
+
+---
+
+**dPay CLI** - [https://github.com/dpays/dpaycli](https://github.com/dpays/dpaycli)
+
+This python library is unmaintained! Swiss army knife for interacting with the dPay blockchain.
+
+---
+
+**ChainSync** - [https://github.com/dpays/chainsync](https://github.com/dpays/chainsync)
 
 A simple library to stream blocks and operations for digesting into other mediums.
 
 ---
 
-**SteemIAPI** - [http://steem.esteem.ws/](http://steem.esteem.ws/)
+**dPay API Explorer** - [http://explore.dpays.io/](http://explore.dpays.io/)
 
-Interactive Steem API swagger, [open-source](https://github.com/eSteemApp/steemapi) script allows you to interact with blockchain.
-
----
-
-**PHP Steem** - [https://github.com/lukestokes/php-steem-tools](https://github.com/lukestokes/php-steem-tools)
-
-Various tools and scripts written in PHP for exploring the STEEM blockchain.
+Interactive Swagger compliant dPay API explorer, [open-source](https://github.com/dpays/dpayswagger) script allows you to interact with blockchain.
 
 ---
 
-**SteemJ** - [https://github.com/marvin-we/steem-java-api-wrapper](https://github.com/marvin-we/steem-java-api-wrapper)
+**dPay PHP Tools** - [https://github.com/dpays/dpay-php-tools](https://github.com/dpays/dpay-php-tools)
 
-An API Wrapper for Steem written in Java
-
----
-
-**GoSteem** - [https://github.com/go-steem/rpc](https://github.com/go-steem/rpc)
-
-Golang RPC client library for Steem
+Various tools and scripts written in PHP for exploring the dPay blockchain.
 
 ---
 
-**SteemClientRS** - [https://github.com/cyberpunk-ventures/steem-client-rs](https://github.com/cyberpunk-ventures/steem-client-rs)
+**dPay Java** - [https://github.com/dpays/dpay-java-api-wrapper](https://github.com/dpays/dpay-java-api-wrapper)
 
-Client library for Steem blockchain built with Rust
+An API Wrapper for dPay written in Java
+
+---
+
+**dPayGo** - [https://github.com/dpays/dpaygo](https://github.com/dpays/dpaygo)
+
+Golang RPC client library for dPay
+
+---
+
+**dPay Rust** - [https://github.com/dpays/dpay-client-rs](https://github.com/dpays/dpay-client-rs)
+
+Client library for dPay blockchain built with Rust
 
 ### Services and databases
 
-**SteemSQL** - [http://www.steemsql.com/](http://www.steemsql.com/)
+**dPay Data** - [https://github.com/dpays/dpaydata](https://github.com/dpaydata)
 
-A private Microsoft SQL server database with Steem blockchain data, subscription based, allows you to do flexible queries and analyze blockchain data.
-
----
-
-**Steem Data** - [https://github.com/SteemData](https://github.com/SteemData)
-
-SteemData is discontinued but open-source python project, it parses the STEEM blockchain for you, and provide the data as a fast and convenient MongoDB service. SteemData helps developers and researchers build better STEEM applications.
+dPayData is discontinued but open-source python project, it parses the dPay blockchain for you, and provide the data as a fast and convenient MongoDB service. dPayData helps developers and researchers build better dPay applications.
 
 ---
 
-**SteemData-Ruby** - [https://github.com/steem-third-party/steem_data](https://github.com/steem-third-party/steem_data)
+**dPayData-Ruby** - [https://github.com/dpays/dpay-data-ruby](https://github.com/dpays/dpay-data-ruby)
 
-Wrapper for accessing steemdata.com in a ruby application. It uses MongoID and ActiveModel to leverage all of the tools provided by those libraries.
-
----
-
-**eSync** - [https://github.com/eSteemApp/esync](https://github.com/eSteemApp/esync)
-
-eSync extracts Steem blockchain data and saves into Mongodb, written in Nodejs.
+Wrapper for accessing dpaydata.com in a ruby application. It uses MongoID and ActiveModel to leverage all of the tools provided by those libraries.
 
 ---
 
-**Glasnost** - [https://github.com/cyberpunk-ventures/glasnost](https://github.com/cyberpunk-ventures/glasnost)
+**ddExport** - [https://github.com/dpays/dd-export](https://github.com/dpays/dd-export)
 
-Glasnost is an GraphQL app server for Steem blockchain built with Elixir, Phoenix and Mnesia.
-
----
-
-### SteemConnect
-
-Most people who will be implementing OAuth2 will want to find and utilize a library in the language of their choice. These libraries, while not necessarily built by Steemit, should support the SteemConnect API.
+ddExport extracts dPay blockchain data and saves into Mongodb, written in Nodejs.
 
 ---
 
-**SteemConnect SDK** - [https://github.com/steemit/steemconnect-sdk](https://github.com/steemit/steemconnect-sdk)
+**Glasnost** - [https://github.com/dpays/glasnost](https://github.com/dpays/glasnost)
 
-An official javascript library for utilizing SteemConnect.
-
----
-
-**steem-connect-firebase-function** - [https://jakipatryk.github.io/steemconnect-firebase-functions/](https://jakipatryk.github.io/steemconnect-firebase-functions/)
-
-A TypeScript library that can help you build applications with SteemConnect and Firebase.
+Glasnost is an GraphQL app server for dPay blockchain built with Elixir, Phoenix and Mnesia.
 
 ---
 
-**Sc2 SDK PHP** - [https://github.com/hernandev/sc2-sdk-php](https://github.com/hernandev/sc2-sdk-php)
+### dPayID
 
-Easily integrate STEEM blockchain into your PHP applications, though SteemConnect.
-
----
-
-**Social Auth SteemConnect** - [https://pypi.python.org/pypi/social-auth-steemconnect/0.0.2](https://pypi.python.org/pypi/social-auth-steemconnect/0.0.2)
-
-Pluggable authentication backend for python-social-auth, that allows authentication via SteemConnect (v2).
+Most people who will be implementing OAuth2 will want to find and utilize a library in the language of their choice. These libraries, while not necessarily built by dPay Labs, should support the dPayID API.
 
 ---
 
-**steemconnect-python-client** - [https://github.com/emre/steemconnect-python-client](https://github.com/emre/steemconnect-python-client)
+**dPayID SDK** - [https://github.com/dpays/dpayid-sdk](https://github.com/dpays/dpayid-sdk)
 
-steemconnect-python-client is a simple yet powerful library to interact with the Steemconnect.
-
----
-
-**omniauth-steemconnect** - [https://rubygems.org/gems/omniauth-steemconnect/versions/0.1.0](https://rubygems.org/gems/omniauth-steemconnect/versions/0.1.0)
-
-Ruby Omniauth2 Strategy for SteemConnect.
+An official javascript library for utilizing dPayID.
 
 ---
 
-**SwiftyConnect** - [https://github.com/caspernikus/SwiftyConnect](https://github.com/caspernikus/SwiftyConnect)
+**dPayID Firebase** - [https://github.com/dpays/dpayid-firebase](https://github.com/dpays/dpayid-firebase)
 
-SteemConnect Library for iOS / Swift.
-
----
-
-**SteemConnect4j** - [https://github.com/hapramp/steemconnect4j](https://github.com/hapramp/steemconnect4j)
-
-Steemconnect SDK for Java.
+A TypeScript library that can help you build applications with dPayID and Firebase.
 
 ---
 
-Many more projects and tools can be found here [https://steemprojects.com](https://steemprojects.com) and [https://steemtools.com](https://steemtools.com)
+**dPayID SDK PHP** - [https://github.com/dpays/dpayid-php](https://github.com/dpays/dpayid-php)
+
+Easily integrate dPays blockchain into your PHP applications, though dPayID.
+
+---
+
+**Social Auth dPayID** - [https://github.com/dpays/dpayid-python-social-auth](https://github.com/dpays/dpayid-python-social-auth)
+
+Pluggable authentication backend for python-social-auth, that allows authentication via dPayID (v2).
+
+---
+
+**dPayID Python** - [https://github.com/dpays/dpayid-python](https://github.com/dpays/dpayid-python)
+
+dPayID Python is a simple yet powerful Python library to interact with the dPayID.
+
+---
+
+**dPayID Swift** - [https://github.com/dpays/dpayid-swift](https://github.com/dpays/dpayid-swift)
+
+dPayID Library for iOS / Swift.
+
+---
+
+**dPayID Java SDK** - [https://github.com/dpays/dpayid-java](https://github.com/dpays/dpayid-java)
+
+dPayID SDK for Java.
+
+---
+
+Many more projects and tools can be found here [https://getdapps.io](https://getdapps.io) and [https://dpaytools.com](https://dpaytools.com)

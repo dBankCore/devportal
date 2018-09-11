@@ -4,37 +4,37 @@ position: 9
 description: 'Fetch list of comments made by account on posts or comments.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Comments](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/09_get_account_comments) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Comments](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/09_get_account_comments) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
-In this tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts to randomize account list and get replies of selected account.
+In this tutorial will explain and show you how to access the **DPay** blockchain using the [dpay-python](https://github.com/dpays/dpay-python) library to fetch list of posts to randomize account list and get replies of selected account.
 
 ## Intro
 
-Steem python library has built-in function to get comments list made by specific account. Since we don't have predefined account list, we will fetch newly created posts and show their authors for selection and give option to choose one account to get its comments. `get_discussions_by_comments` function fetches list of comments made by account. Note that `get_discussions_by_created` filter is used for fetching 5 posts and after selection of its author tutorial uses `author` of the post to fetch that account's comments. 
+DPay python library has built-in function to get comments list made by specific account. Since we don't have predefined account list, we will fetch newly created posts and show their authors for selection and give option to choose one account to get its comments. `get_discussions_by_comments` function fetches list of comments made by account. Note that `get_discussions_by_created` filter is used for fetching 5 posts and after selection of its author tutorial uses `author` of the post to fetch that account's comments.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) - Library install and import
-1.  [**Post list**](#post-list) - List of posts to select from created filter 
+1.  [**Post list**](#post-list) - List of posts to select from created filter
 1.  [**Comments list**](#comments-list) - Get comments list made by selected account
 1.  [**Print output**](#print-output) - Print results in output
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `dpay` - dpay-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize DPay class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize DPay class
+    from dpay import DPay
 
-    s = Steem()
+    s = DPay()
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -108,22 +108,22 @@ The example of result returned from the service is a `JSON` object with the foll
   'children': 0,
   'children_abs_rshares': 0,
   'created': '2018-06-21T06:48:57',
-  'curator_payout_value': '0.000 SBD',
+  'curator_payout_value': '0.000 BBD',
   'depth': 1,
   'id': 53788647,
-  'json_metadata': '{"tags":["life"],"app":"steemit/0.1"}',
+  'json_metadata': '{"tags":["life"],"app":"dsite/0.1"}',
   'last_payout': '1970-01-01T00:00:00',
   'last_update': '2018-06-21T06:48:57',
-  'max_accepted_payout': '1000000.000 SBD',
+  'max_accepted_payout': '1000000.000 BBD',
   'max_cashout_time': '1969-12-31T23:59:59',
   'net_rshares': 0,
   'net_votes': 0,
   'parent_author': 'blazing',
   'parent_permlink': 'that-extra-push-will-take-you-forward',
-  'pending_payout_value': '0.000 SBD',
-  'percent_steem_dollars': 10000,
+  'pending_payout_value': '0.000 BBD',
+  'percent_dpay_dollars': 10000,
   'permlink': 're-blazing-that-extra-push-will-take-you-forward-20180621t064855012z',
-  'promoted': '0.000 SBD',
+  'promoted': '0.000 BBD',
   'reblogged_by': [],
   'replies': [],
   'reward_weight': 10000,
@@ -131,8 +131,8 @@ The example of result returned from the service is a `JSON` object with the foll
   'root_permlink': 'that-extra-push-will-take-you-forward',
   'root_title': 'That extra push will take you forward ',
   'title': '',
-  'total_payout_value': '0.000 SBD',
-  'total_pending_payout_value': '0.000 STEEM',
+  'total_payout_value': '0.000 BBD',
+  'total_pending_payout_value': '0.000 BEX',
   'total_vote_weight': 0,
   'url': '/life/@blazing/that-extra-push-will-take-you-forward#@rakibmaruf24/re-blazing-that-extra-push-will-take-you-forward-20180621t064855012z',
   'vote_rshares': 0},
@@ -164,22 +164,22 @@ The example of result returned from the service is a `JSON` object with the foll
   'children': 1,
   'children_abs_rshares': 0,
   'created': '2018-06-01T17:56:15',
-  'curator_payout_value': '0.018 SBD',
+  'curator_payout_value': '0.018 BBD',
   'depth': 1,
   'id': 51280699,
-  'json_metadata': '{"tags":["finland"],"app":"steemit/0.1"}',
+  'json_metadata': '{"tags":["finland"],"app":"dsite/0.1"}',
   'last_payout': '2018-06-08T17:56:15',
   'last_update': '2018-06-01T17:56:15',
-  'max_accepted_payout': '1000000.000 SBD',
+  'max_accepted_payout': '1000000.000 BBD',
   'max_cashout_time': '1969-12-31T23:59:59',
   'net_rshares': 0,
   'net_votes': 2,
   'parent_author': 'markkujantunen',
   'parent_permlink': 'mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions',
-  'pending_payout_value': '0.000 SBD',
-  'percent_steem_dollars': 10000,
+  'pending_payout_value': '0.000 BBD',
+  'percent_dpay_dollars': 10000,
   'permlink': 're-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions-20180601t175605072z',
-  'promoted': '0.000 SBD',
+  'promoted': '0.000 BBD',
   'reblogged_by': [],
   'replies': [],
   'reward_weight': 10000,
@@ -188,8 +188,8 @@ The example of result returned from the service is a `JSON` object with the foll
   'root_title': 'Mein Kampf Gegen Den Löwenzahn/My Struggle Against The '
                 'Dandelion',
   'title': '',
-  'total_payout_value': '0.067 SBD',
-  'total_pending_payout_value': '0.000 STEEM',
+  'total_payout_value': '0.067 BBD',
+  'total_pending_payout_value': '0.000 BEX',
   'total_vote_weight': 0,
   'url': '/finland/@markkujantunen/mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions#@rakibmaruf24/re-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions-20180601t175605072z',
   'vote_rshares': 0}
@@ -202,7 +202,7 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
+1.  [review dev requirements](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
 1.  clone this repo
 1.  `cd tutorials/09_get_account_comments`
 1.  `pip install -r requirements.txt`

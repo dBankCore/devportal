@@ -1,40 +1,40 @@
 ---
-title: 'JS: Power Up Steem'
+title: 'JS: Power Up BEX'
 position: 24
-description: "_Power up an account's Steem using either Steemconnect or a client-side signing._"
+description: "_Power up an account's BEX using either dPayID or a client-side signing._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Steem](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/24_power_up_steem) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up BEX](https://github.com/dpays/developer-docs-tutorials-js/tree/master/tutorials/24_power_up_bex) can be downloaded as part of the [JS tutorials repository](https://github.com/dpays/developer-docs-tutorials-js).</span>
 <br>
 
 
 
-This tutorial runs on the main Steem blockchain. And accounts queried are real users with liquid STEEM balances.
+This tutorial runs on the main dPay blockchain. And accounts queried are real users with liquid BEX balances.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dsteem` library to pull account from the Steem blockchain. A simple HTML interface is used to capture the account and its STEEM balance as well as allowing interactively power up part or all of STEEM to choose account.
+This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `ddpays` library to pull account from the dPay blockchain. A simple HTML interface is used to capture the account and its BEX balance as well as allowing interactively power up part or all of BEX to choose account.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
+1.  [**App setup**](#app-setup) Setup `ddpays` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Fill form**](#fill-form) Fill form with account reward balances
-4.  [**Power up**](#power-up) Power up STEEM with Steemconnect or Client-side signing.
+4.  [**Power up**](#power-up) Power up BEX with dPayID or Client-side signing.
 
 #### 1. App setup <a name="app-setup"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `ddpays` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const ddpays = require('ddpays');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    '38f14b346eb697ba04ae0f5adcfaa0a437ed3711197704aa256a14cb9b4a8f26';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new ddpays.Client('https://api.dpays.io');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -49,27 +49,27 @@ After account name field is filled with some name, we do automatic search for ac
 
 #### 3. Fill form <a name="fill-form"></a>
 
-After we fetched account data, we will fill form with STEEM balance and show current balance details.
+After we fetched account data, we will fill form with BEX balance and show current balance details.
 
 ```javascript
 const name = _account[0].name;
-const steem_balance = _account[0].balance;
-const balance = `Available Steem balance for ${name}: ${steem_balance}<br/>`;
+const dpay_balance = _account[0].balance;
+const balance = `Available dPay balance for ${name}: ${dpay_balance}<br/>`;
 document.getElementById('accBalance').innerHTML = balance;
-document.getElementById('steem').value = steem_balance;
+document.getElementById('bex').value = dpay_balance;
 const receiver = document.getElementById('receiver').value;
 ```
 
 #### 4. Power up <a name="power-up"></a>
 
-We have 2 options on how to Power up. Steemconnect and Client-side signing options. By default we generate Steemconnect link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
+We have 2 options on how to Power up. dPayID and Client-side signing options. By default we generate dPayID link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
 
 In order to enable client signing, we will generate operation and also show Active Private key (wif) field to sign transaction right there client side.
 Below you can see example of operation and signing transaction, after successful operation broadcast result will be shown in user interface. It will be block number that transaction was included.
 
 ```javascript
 window.submitTx = async () => {
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = ddpays.PrivateKey.fromString(
         document.getElementById('wif').value
     );
     const op = [
@@ -77,7 +77,7 @@ window.submitTx = async () => {
         {
             from: document.getElementById('username').value,
             to: document.getElementById('receiver').value,
-            amount: document.getElementById('steem').value,
+            amount: document.getElementById('bex').value,
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(
@@ -101,7 +101,7 @@ That's it!
 ### To run this tutorial
 
 1.  clone this repo
-1.  `cd tutorials/22_power_up_steem`
+1.  `cd tutorials/22_power_up_dpay`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

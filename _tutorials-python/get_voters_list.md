@@ -4,37 +4,37 @@ position: 3
 description: 'Voters list and detail of each vote on selected content.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Voters List](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/03_get_voters_list) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Voters List](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/03_get_voters_list) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
-Tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts and get voters info on selected post.
+Tutorial will explain and show you how to access the **dPay** blockchain using the [dpay-python](https://github.com/dpays/dpay-python) library to fetch list of posts and get voters info on selected post.
 
 ## Intro
 
-Steem python library has built-in function to get active voters information if post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one post to get its active voters. `get_active_votes` function fetches list of active voters on content. Note that `get_discussions_by_active` filter is used for fetching 5 posts which by default contains `active_votes` of each post, but for purpose of this tutorial we will use `get_active_votes` function to fetch voters info.
+dPay python library has built-in function to get active voters information if post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one post to get its active voters. `get_active_votes` function fetches list of active voters on content. Note that `get_discussions_by_active` filter is used for fetching 5 posts which by default contains `active_votes` of each post, but for purpose of this tutorial we will use `get_active_votes` function to fetch voters info.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) - Library install and import
-1.  [**Post list**](#post-list) - List of posts to select from created filter 
+1.  [**Post list**](#post-list) - List of posts to select from created filter
 1.  [**Voters list**](#voters-list) - Get voters list for selected post
 1.  [**Print output**](#print-output) - Print results in output
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `dpay` - dpay-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize DPay class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize DPay class
+    from dpay import DPay
 
-    s = Steem()
+    s = DPay()
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -103,7 +103,7 @@ The example of result returned from the service is a `JSON` object with the foll
   'voter': 'jiahn',
   'weight': 80257}
 ]
-'Selected: steemitblog/join-team-steemit-at-tokenfest'
+'Selected: dsiteblog/join-team-dsite-at-tokenfest'
 ```
 
 From this result you have access to everything associated to the voter including reputation of voter, timestamp, voter's account name, percent and weight of vote, rshares reward shares values that you can be use in further development of application with Python.
@@ -112,7 +112,7 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
+1.  [review dev requirements](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements)
 1.  clone this repo
 1.  `cd tutorials/03_get_voters_list`
 1.  `pip install -r requirements.txt`

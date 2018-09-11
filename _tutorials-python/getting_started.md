@@ -1,19 +1,19 @@
 ---
 title: 'PY: Getting Started'
 position: 0
-description: 'The official Steem library for Python is `steem-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `steempy`.'
+description: 'The official dPay library for Python is `dpay-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `dpaypy`.'
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://github.com/dpays/developer-docs-tutorials-py/tree/master/tutorials/00_getting_started) can be downloaded as part of the [PY tutorials repository](https://github.com/dpays/developer-docs-tutorials-py).</span>
 <br>
 
 
 
 The library was designed to allow Python developers to easily access the network as well as build utilities and applications.
 
-Currently steem-python documentation is generated in the standard [pydoc format](https://steem.readthedocs.io/en/latest/).
+Currently dpay-python documentation is generated in the standard [pydoc format](https://dpay.readthedocs.io/en/latest/).
 
-Documentation is available at: [Official steem-python Docs](https://github.com/steemit/steem-python).
+Documentation is available at: [Official dpay-python Docs](https://github.com/dpays/dpay-python).
 
 ---
 
@@ -26,7 +26,7 @@ In our Python tutorials we recommend developers to be familiar with following re
 
 * Medium knowledge of package manager `pip/pip3` and/or `pipenv` is required, since our tutorials will be using package manager to get started quickly.
 
-* Terminal (Linux/Mac) or Cmd (Windows command prompt) knowledge is also required, since most python tutorials will only work with terminal and print out result in different formats. 
+* Terminal (Linux/Mac) or Cmd (Windows command prompt) knowledge is also required, since most python tutorials will only work with terminal and print out result in different formats.
 
 * Python environment path should be set up properly so that terminal can access proper python library without conflicts.
 

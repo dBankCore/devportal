@@ -11,7 +11,7 @@ layout: full
 Dynamic Global Properties represents a set of values that are calculated during normal chain operations and reflect the current values of global blockchain properties.
 
 [The API](#example-method-call) returns an object containing information that changes every block interval such as the head block number, the total vesting fund, etc.
-    
+
 ### Sections
 
 * Fields
@@ -23,12 +23,12 @@ Dynamic Global Properties represents a set of values that are calculated during 
   * [num_pow_witnesses](#num_pow_witnesses)
   * [virtual_supply](#virtual_supply)
   * [current_supply](#current_supply)
-  * [current_sbd_supply](#current_sbd_supply)
-  * [total_vesting_fund_steem](#total_vesting_fund_steem)
+  * [current_bbd_supply](#current_bbd_supply)
+  * [total_vesting_fund_dpay](#total_vesting_fund_dpay)
   * [total_vesting_shares](#total_vesting_shares)
-  * [total_reward_fund_steem](#total_reward_fund_steem)
+  * [total_reward_fund_dpay](#total_reward_fund_dpay)
   * [total_reward_shares2](#total_reward_shares2)
-  * [sbd_interest_rate](#sbd_interest_rate)
+  * [bbd_interest_rate](#bbd_interest_rate)
   * [maximum_block_size](#maximum_block_size)
   * [current_aslot](#current_aslot)
   * [recent_slots_filled](#recent_slots_filled)
@@ -87,53 +87,53 @@ The current count of how many pending POW witnesses there are, determines the di
 
 ### `virtual_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-The virtual supply is the supply of all STEEM + all SBD if all SBD were converted to STEEM at the current median price.
+The virtual supply is the supply of all BEX + all BBD if all BBD were converted to BEX at the current median price.
 
-* example: `283290592.652 STEEM`
+* example: `283290592.652 BEX`
 
 ### `current_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-STEEM currently in existence.
+BEX currently in existence.
 
-* example: `271546371.129 STEEM`
+* example: `271546371.129 BEX`
 
 ### `confidential_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Total asset held in confidential balances.
 
-* example: `0.000 STEEM`
+* example: `0.000 BEX`
 
-### `current_sbd_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `current_bbd_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-SBD currently in existence.
+BBD currently in existence.
 
-* example: `15478883.968 SBD`
+* example: `15478883.968 BBD`
 
-### `confidential_sbd_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `confidential_bbd_supply`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Total asset held in confidential balances.
 
-* example: `0.000 SBD`
+* example: `0.000 BBD`
 
-### `total_vesting_fund_steem` <span class="warn deprecated">Deprecated</span><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `total_vesting_fund_dpay` <span class="warn deprecated">Deprecated</span><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-*Now deprecated way to get STEEM that is invested in STEEM POWER (powered up).*
+*Now deprecated way to get BEX that is invested in BEX POWER (powered up).*
 
 Use [`condenser_api.get_reward_fund`](/apidefinitions/#condenser_api.get_reward_fund) instead.
 
-* example: `192713261.007 STEEM`
+* example: `192713261.007 BEX`
 
 ### `total_vesting_shares`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-VESTS that are invested in STEEM POWER (powered up).
+VESTS that are invested in BEX POWER (powered up).
 
 * example: `390950506702.452773 VESTS`
 
-### `total_reward_fund_steem`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `total_reward_fund_dpay`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-STEEM available in the reward pool.
+BEX available in the reward pool.
 
-* example: `0.000 STEEM`
+* example: `0.000 BEX`
 
 ### `total_reward_shares2` <span class="warn deprecated">Deprecated</span> <a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -143,16 +143,16 @@ Use [`condenser_api.get_reward_fund`](/apidefinitions/#condenser_api.get_reward_
 
 * example: `0`
 
-### `sbd_interest_rate`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `bbd_interest_rate`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-This property defines the interest rate that SBD deposits receive.
+This property defines the interest rate that BBD deposits receive.
 
 * example: `0`
 
 ### `maximum_block_size`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Maximum block size is decided by the set of active witnesses which change every round.  Each witness posts what they think the maximum size should be as part of their witness properties, the median size is chosen to be the maximum block size for the round.
-  
+
 **Note:** the minimum value for `maximum_block_size` is defined by the protocol to prevent the network from getting stuck by witnesses attempting to set this too low.
 
 * example: `65536`
@@ -189,13 +189,13 @@ Average block size is updated every block to be: `average_block_size = (99 * ave
 
 ### `current_reserve_ratio`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Any time `average_block_size <= 50% maximum_block_size` this value grows by 1 until it reaches `STEEM_MAX_RESERVE_RATIO`.  Any time `average_block_size` is greater than 50% it falls by 1%.  Upward adjustments happen once per round, downward adjustments happen every block.
+Any time `average_block_size <= 50% maximum_block_size` this value grows by 1 until it reaches `dpay_MAX_RESERVE_RATIO`.  Any time `average_block_size` is greater than 50% it falls by 1%.  Upward adjustments happen once per round, downward adjustments happen every block.
 
 * example: `200000000`
 
 ### `max_virtual_bandwidth`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * STEEM_BANDWIDTH_AVERAGE_WINDOW_SECONDS / STEEM_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
+The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * dpay_BANDWIDTH_AVERAGE_WINDOW_SECONDS / dpay_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
 
 * example: `264241152000000000000`
 
@@ -204,18 +204,18 @@ The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_blo
 Fields not covered in this recipe are:
 
 * `confidential_supply`
-* `confidential_sbd_supply`
+* `confidential_bbd_supply`
 * `pending_rewarded_vesting_shares`
-* `pending_rewarded_vesting_steem`
-* `sbd_print_rate`
+* `pending_rewarded_vesting_dpay`
+* `bbd_print_rate`
 * `participation_count`
 
 ### Example Method Call<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-To retrieve the current results for [`condenser_api.get_dynamic_global_properties`](https://developers.steem.io/apidefinitions/#condenser_api.get_dynamic_global_properties), we can retrieve the current state information using `curl`:
+To retrieve the current results for [`condenser_api.get_dynamic_global_properties`](https://developers.dpays.io/apidefinitions/#condenser_api.get_dynamic_global_properties), we can retrieve the current state information using `curl`:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.dpays.io
 ```
 
 ### Example Output<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -228,22 +228,22 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_pro
       "head_block_number":24238248,
       "head_block_id":"0171d8a833dc369abd034b0c67d8725f96df9e5b",
       "time":"2018-07-16T22:41:24",
-      "current_witness":"xeldal",
+      "current_witness":"jared",
       "total_pow":514415,
       "num_pow_witnesses":172,
-      "virtual_supply":"283434761.199 STEEM",
-      "current_supply":"271729171.190 STEEM",
-      "confidential_supply":"0.000 STEEM",
-      "current_sbd_supply":"15498201.173 SBD",
-      "confidential_sbd_supply":"0.000 SBD",
-      "total_vesting_fund_steem":"192913644.627 STEEM",
+      "virtual_supply":"283434761.199 BEX",
+      "current_supply":"271729171.190 BEX",
+      "confidential_supply":"0.000 BEX",
+      "current_bbd_supply":"15498201.173 BBD",
+      "confidential_bbd_supply":"0.000 BBD",
+      "total_vesting_fund_dpay":"192913644.627 BEX",
       "total_vesting_shares":"391296886352.617261 VESTS",
-      "total_reward_fund_steem":"0.000 STEEM",
+      "total_reward_fund_dpay":"0.000 BEX",
       "total_reward_shares2":"0",
       "pending_rewarded_vesting_shares":"379159224.860656 VESTS",
-      "pending_rewarded_vesting_steem":"185294.019 STEEM",
-      "sbd_interest_rate":0,
-      "sbd_print_rate":2933,
+      "pending_rewarded_vesting_dpay":"185294.019 BEX",
+      "bbd_interest_rate":0,
+      "bbd_print_rate":2933,
       "maximum_block_size":65536,
       "current_aslot":24315228,
       "recent_slots_filled":"340282366920938463463374607431768211400",
