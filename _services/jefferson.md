@@ -4,13 +4,13 @@ position: 3
 description: A reverse proxy that forwards json-rpc requests.
 ---
 
-Jussi is a custom-built caching layer for use with `dpayd` and other various services (such as [DPDS](/services/#services-dpds)).
+Jefferson is a custom-built caching layer for use with `dpayd` and other various services (such as [DPDS](/services/#services-dpds)).
 
 The purpose of this document is to help developers and node operators set up their own jefferson node within a docker container.
 
 ### Intro
 
-Jussi is a reverse proxy that is situation between the API client and the `dpayd` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
+Jefferson is a reverse proxy that is situation between the API client and the `dpayd` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
 
 ### Sections
 
@@ -43,7 +43,7 @@ docker run -itp 9000:8080 "$USER/jefferson:$(git rev-parse --abbrev-ref HEAD)"
 curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[8675309], "id":1}' http://localhost:9000
 ```
 
-See: [Running Condenser, Jussi and a new service locally + adding feature flags to Condenser](https://dsite.io/dpaydev/@dpay/running-condenser-jefferson-and-a-new-service-locally-adding-feature-flags-to-condenser)
+See: [Running Condenser, Jefferson and a new service locally + adding feature flags to Condenser](https://dsite.io/dpaydev/@dpay/running-condenser-jefferson-and-a-new-service-locally-adding-feature-flags-to-condenser)
 
 ---
 
@@ -132,7 +132,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"foo.bar", "params":["baz"], "id":1}'
 
 #### Time To Live<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Jussi can be configured with various `TTL` (Time To Live) schemes. A `TTL` is an integer value in seconds.  Integers equal to or less than `0` have special meaning.  A reasonable set of defaults would be:
+Jefferson can be configured with various `TTL` (Time To Live) schemes. A `TTL` is an integer value in seconds.  Integers equal to or less than `0` have special meaning.  A reasonable set of defaults would be:
 
 | Upstream   | API                     | Method                          | Parameters         | TTL (seconds) |
 |------------|-------------------------|---------------------------------|--------------------|---------------|
