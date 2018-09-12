@@ -189,13 +189,13 @@ Average block size is updated every block to be: `average_block_size = (99 * ave
 
 ### `current_reserve_ratio`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Any time `average_block_size <= 50% maximum_block_size` this value grows by 1 until it reaches `dpay_MAX_RESERVE_RATIO`.  Any time `average_block_size` is greater than 50% it falls by 1%.  Upward adjustments happen once per round, downward adjustments happen every block.
+Any time `average_block_size <= 50% maximum_block_size` this value grows by 1 until it reaches `DPAY_MAX_RESERVE_RATIO`.  Any time `average_block_size` is greater than 50% it falls by 1%.  Upward adjustments happen once per round, downward adjustments happen every block.
 
 * example: `200000000`
 
 ### `max_virtual_bandwidth`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * dpay_BANDWIDTH_AVERAGE_WINDOW_SECONDS / dpay_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
+The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * DPAY_BANDWIDTH_AVERAGE_WINDOW_SECONDS / DPAY_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
 
 * example: `264241152000000000000`
 
