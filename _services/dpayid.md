@@ -19,7 +19,7 @@ The goal of dPayID is to provide a safe way of connecting to the blockchain via 
 dPayID works by granting an access token to the requesting app once the application has been approved.
 A full tutorial on how to set up an application, request authorization and grant access can be found [HERE](/tutorials-javascript/dpayid)
 
-**dPay Authorisation and OAuth 2**
+**dPay Authorization and OAuth 2**
 
 The OAuth protocol allows third party apps to grant limited access to an HTTP service, either on behalf of a resource owner or by allowing the app to obtain access on its own behalf. The authorization is provided without the private key or password of the user being shared with the third party.
 Simplified, the process includes the following steps:
