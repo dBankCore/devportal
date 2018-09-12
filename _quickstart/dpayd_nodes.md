@@ -75,7 +75,7 @@ Another settings that can be changed in `config.ini` is `flush` - it is to speci
 
 ``` bash
 docker run \
-    -d -p 2001:2001 -p 8090:8090 --name dpayd-default \
+    -d -p 6620:6620 -p 1776:1776 --name dpayd-default \
     dpay/dpay
 
 docker logs -f dpayd-default  # follow along
@@ -83,7 +83,7 @@ docker logs -f dpayd-default  # follow along
 ``` bash
 docker run \
     --env USE_WAY_TOO_MUCH_RAM=1 \
-    -d -p 2001:2001 -p 8090:8090 --name dpayd-full \
+    -d -p 6620:6620 -p 1776:1776 --name dpayd-full \
     dpay/dpay
 
 docker logs -f dpayd-full

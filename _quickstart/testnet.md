@@ -69,7 +69,7 @@ plugin = chain p2p webserver witness database_api network_broadcast_api block_ap
 
 shared-file-dir = "blockchain"
 shared-file-size = 12G
-p2p-endpoint = 0.0.0.0:2001
+p2p-endpoint = 0.0.0.0:6620
 webserver-http-endpoint = 0.0.0.0:8751
 webserver-ws-endpoint = 0.0.0.0:8752
 

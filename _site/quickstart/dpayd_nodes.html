@@ -419,7 +419,7 @@ echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
 <p>Another settings that can be changed in <code class="highlighter-rouge">config.ini</code> is <code class="highlighter-rouge">flush</code> - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name dpayd-default <span class="se">\</span>
+    -d -p 6620:6620 -p 1776:1776 --name dpayd-default <span class="se">\</span>
     dpay/dpay
 
 docker logs -f dpayd-default  <span class="c"># follow along</span>
@@ -427,7 +427,7 @@ docker logs -f dpayd-default  <span class="c"># follow along</span>
 </div>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
     --env <span class="nv">USE_WAY_TOO_MUCH_RAM</span><span class="o">=</span>1 <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name dpayd-full <span class="se">\</span>
+    -d -p 6620:6620 -p 1776:1776 --name dpayd-full <span class="se">\</span>
     dpay/dpay
 
 docker logs -f dpayd-full
