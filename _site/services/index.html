@@ -526,13 +526,13 @@ A full breakdown of OAuth2 and how it applies to dSite and dPayID can be found <
 				<p class="description">A reverse proxy that forwards json-rpc requests.</p>
 			
 
-			<p>Jussi is a custom-built caching layer for use with <code class="highlighter-rouge">dpayd</code> and other various services (such as <a href="/services/#services-dpds">DPDS</a>).</p>
+			<p>Jefferson is a custom-built caching layer for use with <code class="highlighter-rouge">dpayd</code> and other various services (such as <a href="/services/#services-dpds">DPDS</a>).</p>
 
 <p>The purpose of this document is to help developers and node operators set up their own jefferson node within a docker container.</p>
 
 <h3 id="intro">Intro</h3>
 
-<p>Jussi is a reverse proxy that is situation between the API client and the <code class="highlighter-rouge">dpayd</code> server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.</p>
+<p>Jefferson is a reverse proxy that is situation between the API client and the <code class="highlighter-rouge">dpayd</code> server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.</p>
 
 <h3 id="sections">Sections</h3>
 
@@ -570,7 +570,7 @@ docker run -itp 9000:8080 <span class="s2">"</span><span class="nv">$USER</span>
 </code></pre>
 </div>
 
-<p>See: <a href="https://dsite.io/dpaydev/@dpay/running-condenser-jefferson-and-a-new-service-locally-adding-feature-flags-to-condenser">Running Condenser, Jussi and a new service locally + adding feature flags to Condenser</a></p>
+<p>See: <a href="https://dsite.io/dpaydev/@dpay/running-condenser-jefferson-and-a-new-service-locally-adding-feature-flags-to-condenser">Running Condenser, Jefferson and a new service locally + adding feature flags to Condenser</a></p>
 
 <hr />
 
@@ -659,7 +659,7 @@ docker run -itp 9000:8080 <span class="s2">"</span><span class="nv">$USER</span>
 
 <h4 id="time-to-live">Time To Live<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h4>
 
-<p>Jussi can be configured with various <code class="highlighter-rouge">TTL</code> (Time To Live) schemes. A <code class="highlighter-rouge">TTL</code> is an integer value in seconds.  Integers equal to or less than <code class="highlighter-rouge">0</code> have special meaning.  A reasonable set of defaults would be:</p>
+<p>Jefferson can be configured with various <code class="highlighter-rouge">TTL</code> (Time To Live) schemes. A <code class="highlighter-rouge">TTL</code> is an integer value in seconds.  Integers equal to or less than <code class="highlighter-rouge">0</code> have special meaning.  A reasonable set of defaults would be:</p>
 
 <table>
   <thead>
