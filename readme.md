@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dsite/devportal/master/images/dpaydev.png" alt="dPay API Portal" width="226">
+  <img src="https://raw.githubusercontent.com/dpays/developer-docs/master/images/dpaydev.png" alt="dPay API Portal" width="226">
   <br>
   <br>
 
